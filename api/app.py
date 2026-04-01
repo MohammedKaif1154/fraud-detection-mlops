@@ -2,10 +2,11 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pickle
 import numpy as np
+import os
 
+model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+model = pickle.load(open(model_path, "rb"))
 app = FastAPI()
-
-model = pickle.load(open("model.pkl", "rb"))
 
 # Define schema
 class InputData(BaseModel):
